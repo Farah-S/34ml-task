@@ -11,7 +11,7 @@ class Achievement extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'title',
         'required_num'
     ];
 
