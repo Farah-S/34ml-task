@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('badges', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->unique();
+            $table->integer('required_ach')->unique();
             $table->timestamps();
         });
     }
