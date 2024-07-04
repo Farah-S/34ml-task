@@ -25,7 +25,7 @@ class BadgeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=> fake()->title(),
+            'title'=> fake()->title(),
             'required_ach'=> fake()->numberBetween(0,10),
         ];
     }

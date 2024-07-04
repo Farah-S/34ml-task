@@ -24,9 +24,28 @@ class AchievementFactory extends Factory
      */
     public function definition(): array
     {
-       return [
-            'name'=> fake()->title(),
-            'required_num'=> fake()->numberBetween(1,50),
+        $title="";
+        $req=1;
+        $type=array_rand([" Comment", " Lesson"]);
+        if($type.equalTo(" Lesson")){
+            $number=array_rand(["First","5","10","25","50"]);
+            if($number!="First"){
+                $req=(int)$number;
+                $type+="s";
+            }
+            $title= $number + $type + " Watched";
+        }
+        else{
+            $number=array_rand(["First","3","5","10","20"]);
+            $title = $number + $type + " Written";
+            if($number!="First"){
+                $req=(int)$number;
+                $type+="s";
+            }
+        }
+        return [
+            'title'=> $title,
+            'required_num'=> $req,
         ];
     }
 }
