@@ -11,7 +11,7 @@ class Achievement extends Model
 
     protected $fillable = [
         'name',
-        'required_number'
+        'required_num'
     ];
 
     public function users(): BelongsToMany {
