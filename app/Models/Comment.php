@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'text',
+    ];
+
+    public function lesson(): BelongsTo {
+        return $this->belongsTo(Lesson::class);
+    }
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
+    }
 }

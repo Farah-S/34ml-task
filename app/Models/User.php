@@ -50,4 +50,8 @@ class User extends Authenticatable
                     ->withPivot('completed')
                     ->withTimestamps();
     }
+
+    public function comments(): HasMany {
+        return $this->hasMany(Comment::class);
+    }
 }
