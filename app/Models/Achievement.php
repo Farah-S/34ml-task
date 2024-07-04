@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Achievement extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'required_number'
+    ];
+
+    public function users(): BelongsToMany {
+        return $this->belongsToMany(User::class)
+                    ->withTimestamps();
+    }
 }

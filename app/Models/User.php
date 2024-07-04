@@ -54,4 +54,9 @@ class User extends Authenticatable
     public function comments(): HasMany {
         return $this->hasMany(Comment::class);
     }
+
+    public function achievements(): BelongsToMany {
+        return $this->belongsToMany(Achievement::class)
+                    ->withTimestamps();
+    }
 }
