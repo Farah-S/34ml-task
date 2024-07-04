@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Badge extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'required_ach'
+    ];
+
+    public function users(): BelongsToMany {
+        return $this->belongsToMany(User::class)
+                    ->withTimestamps();
+    }
 }
