@@ -11,7 +11,7 @@ class Badge extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'title',
         'required_ach'
     ];
 

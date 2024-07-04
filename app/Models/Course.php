@@ -12,7 +12,7 @@ class Course extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'title'
     ];
 
     public function users(): BelongsToMany {

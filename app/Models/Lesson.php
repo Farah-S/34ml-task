@@ -12,7 +12,7 @@ class Lesson extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'title',
         'order',
     ];
 

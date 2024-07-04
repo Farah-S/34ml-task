@@ -27,7 +27,7 @@ class LessonFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->title(),
+            'title' => fake()->title(),
             'order' => fake()->numberBetween(1,20),
         ];
     }
