@@ -47,7 +47,17 @@ class LessonController extends Controller
                     ->join('users', 'comments.user_id', '=', 'users.id')
                     ->select('users.name', 'comments.*')
                     ->get();
+
+        $lessons =    DB::table('lessons')
+                    ->join('lesson_user', 'lesson_user.lesson_id', '=', 'lessons.id')
+                    ->where('lesson_user.user_id', '=', Auth::user()->id)
+                    ->select('lesson_user.completed', 'lessons.*')
+                    ->get();
+                    
+        $object['course'] =$object['course'][0];
+        $object['course']['lessons'] = $lessons;
         $object['comments']=$comments;
+        // $object['course']=$course;
         // Pass the parameters to the view
         return view('lesson', compact('object'));
     }
@@ -58,7 +68,7 @@ class LessonController extends Controller
             ->select('user_id')->where('user_id', '=', Auth::id())->where('course_id','=',$lesson->course_id)
             ->get();
         $course = DB::table('courses')
-            ->select('name')->where('id','=',$lesson->course_id)
+            ->select()->where('id','=',$lesson->course_id)
             ->get();
       
         // $request->session()->flash('lesson', $lesson);

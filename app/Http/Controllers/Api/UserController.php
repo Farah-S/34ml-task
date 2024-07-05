@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Course;
+use Illuminate\Support\Facades\DB;
+use App\Models\Course;  
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -54,6 +55,13 @@ class UserController extends Controller
     {
         $c_id = $request->input('course_id');
         Auth::user()->courses()->attach($c_id, ['completed' => false]);
+        $lessons=DB::table('lessons')
+                    ->where('lessons.course_id', '=',$c_id)
+                    ->select()
+                    ->get();
+        foreach($lessons as $l){
+            Auth::user()->lessons()->attach($l->id, ['completed' => false]);
+        }
         $course = Course::find($c_id);
         return redirect()->route('course', ['course' => $course]);
     }
