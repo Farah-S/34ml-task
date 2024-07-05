@@ -53,6 +53,12 @@ class User extends Authenticatable
                     ->withTimestamps();
     }
 
+    public function lessons(): BelongsToMany {
+        return $this->belongsToMany(Lesson::class)
+                    ->withPivot('completed')
+                    ->withTimestamps();
+    }
+
     public function comments(): HasMany {
         return $this->hasMany(Comment::class);
     }
