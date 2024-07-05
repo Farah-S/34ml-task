@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\HomeController;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\LessonController;
 use App\Http\Middleware\FetchCoursesMiddleware;
 use App\Http\Middleware\IsEnrolledMiddleware;
@@ -20,6 +21,7 @@ Route::get('/lesson', [LessonController::class, 'show'])->name('lesson');
 
 Route::post('/enroll', [UserController::class, 'enroll'])->name('course.enroll');
 
+Route::post('/comment', [CommentController::class, 'store'])->name('comment');
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])

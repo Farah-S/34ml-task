@@ -42,9 +42,11 @@ class LessonController extends Controller
     {
         $serializedObject = $request->query('object');
         $object = json_decode($serializedObject, true);
-        $comments = DB::table('comments','users')
-            ->select('text','name')->where('lesson_id', '=', $object['lesson']['id'])
-            ->get();
+
+        $comments = DB::table('comments')
+                    ->join('users', 'comments.user_id', '=', 'users.id')
+                    ->select('users.name', 'comments.*')
+                    ->get();
         $object['comments']=$comments;
         // Pass the parameters to the view
         return view('lesson', compact('object'));

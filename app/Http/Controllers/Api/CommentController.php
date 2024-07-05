@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -28,7 +31,27 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // Update the database based on the request data
+        // $user = User::find($request->input('user_id'));
+        $text = $request->input('text');
+        $lesson_id = $request->input('lesson_id');
+        $object = $request->input('object');
+        
+        $request->validate([
+            'text' => 'required|string',
+        ]);
+                // DB::enableQueryLog();
+
+        $comment = Comment::create([
+            'text' => $text,
+            'user_id' => Auth::user()->id,
+            'lesson_id' => $lesson_id,
+        ]);
+        // dd(DB::getQueryLog());
+
+        $comment->save();
+        $object['comments'][]=$comment;
+        return back();
     }
 
     /**
