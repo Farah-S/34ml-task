@@ -18,6 +18,7 @@ Route::get('/course/{course}', [CourseController::class, 'show'])->name('course'
 
 Route::get('/enrolledCheck/{lesson}', [LessonController::class, 'check'])->middleware(['auth'])->name('enrolledCheck');
 Route::get('/lesson', [LessonController::class, 'show'])->name('lesson');
+Route::post('/lessonUpdate', [LessonController::class, 'update'])->name('lessons.update');
 
 Route::post('/enroll', [UserController::class, 'enroll'])->name('course.enroll');
 

@@ -53,7 +53,7 @@ class LessonController extends Controller
                     ->where('lesson_user.user_id', '=', Auth::user()->id)
                     ->select('lesson_user.completed', 'lessons.*')
                     ->get();
-                    
+
         $object['course'] =$object['course'][0];
         $object['course']['lessons'] = $lessons;
         $object['comments']=$comments;
@@ -99,9 +99,29 @@ class LessonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Lesson $lesson)
+    public function update(Request $request)
     {
-        //
+        $lesson_id = $request->input('lesson_id');
+        $course_id = $request->input('course_id');
+        
+        $lessonUser = Auth::user()->lessons()->where('lesson_id', $lesson_id)->first()->pivot;
+        $lessonUser->completed = true; 
+        $lessonUser->save();
+        
+        $course = DB::table('courses')
+            ->select()->where('id','=',$course_id)
+            ->get();
+        
+
+        $lesson =    DB::table('lessons')
+                    ->where('lessons.id', '=', $lesson_id)
+                    ->select()
+                    ->get();
+
+        $object['course'] =$course;
+        $object['lesson'] =$lesson[0];
+        $serializedObject = json_encode($object);
+        return redirect()->route('lesson', ['object' => $serializedObject]);
     }
 
     /**
