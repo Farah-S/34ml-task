@@ -25,7 +25,7 @@ class AchievementFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'=> fake()->title(),
+            'title'=> fake()->text(random_int(5,15)),
             'required_num'=> fake()->numberBetween(1,50),
         ];
     }

@@ -17,7 +17,7 @@
 <div>
   <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
     
-    <h2 class="text-xl font-bold mb-2">Available Courses</h2>
+    <h1 class="text-xl font-bold mb-2 p-2">Available Courses</h1>
 
 
      @if($courses && $courses->count())

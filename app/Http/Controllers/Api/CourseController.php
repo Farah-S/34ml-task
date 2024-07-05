@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -37,7 +39,13 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        // $user = auth()->user();
+        $result = DB::table('course_user')
+            ->select('completed')->where('user_id', '=', Auth::id())->where('course_id','=',$course->id)
+            ->get();
+        
+        $course->enrolled = count($result)>0;
+        return view('course', compact('course'));
     }
 
     /**
