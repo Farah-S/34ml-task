@@ -16,6 +16,12 @@ class Lesson extends Model
         'order',
     ];
 
+    public function users(): BelongsToMany {
+        return $this->belongsToMany(User::class)
+                    ->withPivot('completed')
+                    ->withTimestamps();
+    }
+
     public function course(): BelongsTo {
         return $this->belongsTo(Course::class);
     }
