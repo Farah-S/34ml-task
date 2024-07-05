@@ -53,8 +53,8 @@
           <div class="flex space-x-4">
             <!-- <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl"> --> 
                     
-                <a href="#" class="rounded-md px-3 py-2 text-black hover:bg-gray-700 hover:text-black" aria-current="page">Home</a>
-                <a href="#" class="rounded-md px-3 py-2  text-black hover:bg-gray-700 hover:text-black">Courses</a>
+                <a href="/" class="rounded-md px-3 py-2 text-black hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
+                <!-- <a href="/" class="rounded-md px-3 py-2  text-black hover:bg-gray-700 hover:text-white">Courses</a> -->
                 <a href="#" class="rounded-md px-3 py-2  text-black hover:bg-gray-700 hover:text-white">About Us</a>
                 <a href="#" class="rounded-md px-3 py-2  text-black hover:bg-gray-700 hover:text-white">Contact Us</a>
                 
