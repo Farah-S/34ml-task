@@ -1,11 +1,22 @@
+<?php
+
+use App\Livewire\Actions\Logout;
+use Livewire\Volt\Component;
+
+new class extends Component
+{
+    /**
+     * Log the current user out of the application.
+     */
+    public function logout(Logout $logout): void
+    {
+        $logout();
+
+        $this->redirect('/', navigate: true);
+    }
+}; ?>
 <nav class="-mx-3 flex flex-1 justify-end">
     @auth
-        <!-- <a
-            href="{{ url('/dashboard') }}"
-            class="rounded-md px-3 py-2  text-black hover:bg-gray-700 hover:text-white"
-        >
-            Dashboard
-        </a> -->
         <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
