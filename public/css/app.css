@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pad{
+    align-content: center;
+    margin: 5%;
+}
+.course-image{
+    width:25%
+}
+.course-container{
+    width: 80%;
+    margin: 0 auto;
+}
+.blue-link{
+    color:blue;
+}
+.navbar-bg{
+    background-color: transparent;
+    color: black;
+    font-size: 28;
+    /* border-color: black; */
+    border-bottom-width: 2px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+}

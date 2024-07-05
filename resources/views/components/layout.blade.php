@@ -14,12 +14,10 @@
         <!-- Styles -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="antialiased font-sans bg-image">
+    <body class="antialiased font-sans">
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
           
-                        <nav class="navbar-bg" style="border-bottom-width: 2px;
-    border-bottom-color: black;
-    border-bottom-style: solid;">
+                        <nav class="navbar-bg" >
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
