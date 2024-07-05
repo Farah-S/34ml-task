@@ -1,10 +1,10 @@
 <x-layout>
     @section('content')
-    <div class="container mx-auto p-4 pad">
-        <div class="flex items-center course-container">
+    <div class="container mx-auto p-7 pad" style="max-width:80%">
+        <div class="flex items-center">
             <!-- Image on the left -->
             <div class="w-1/3 course-image">
-                <img src="your-image-url.jpg" alt="Image Description" class="w-full h-auto">
+                <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="course Image" class="h-auto" style="width: 75%">
             </div>
             <!-- Info column on the right -->
             <div class="w-2/3">

@@ -20,15 +20,23 @@
     <h2 class="text-xl font-bold mb-2">Available Courses</h2>
 
 
-    
+     @if($courses && $courses->count())
+        
     <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-      <x-home-course/>
-      <x-home-course/>
-      <x-home-course/>
-      <x-home-course/>
-      <x-home-course/>
-      
+      @foreach($courses as $c)
+      <div class="course">
+          
+          <x-home-course :course="$c"/>
+          
+        </div>
+        
+        @endforeach
     </div>
+    @else
+        <p>No courses available.</p>
+    @endif
+    
+
   </div>
 </div>
 
