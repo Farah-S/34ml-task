@@ -10,7 +10,8 @@
     width:25%
 }
 .course-container{
-    width: 80%;
+    width: 14rem;
+    height: max-content;
     margin: 0 auto;
 }
 .blue-link{
