@@ -2,20 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-.gap{
+.pad{
     align-content: center;
     margin: 5%;
 }
-.bg-image{
-    background-image: url("https://laravel.com/assets/img/welcome/background.svg");
-/* background-image: ; */
+.course-image{
+    width:25%
+}
+.course-container{
+    width: 80%;
+    margin: 0 auto;
+}
+.blue-link{
+    color:blue;
 }
 .navbar-bg{
-    background-color: transparent;
+    background-color: white;
     color: black;
     font-size: 28;
     /* border-color: black; */
-    border-bottom-width: 4px;
+    border-bottom-width: 2px;
     border-bottom-color: black;
     border-bottom-style: solid;
 }
