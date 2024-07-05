@@ -3,7 +3,7 @@
 <x-lesson-sidebar/>
 <div class="p-4 sm:ml-64">
    <div class="p-4 mt-14">
-        <h2 class="text-xl font-bold mb-2"> lesson name</h2>
+        <h2 class="text-xl font-bold mb-2">{{$object['lesson']['title']}}</h2>
      
       <div class="flex items-center justify-center mb-4 rounded bg-gray-50 dark:bg-gray-800" style="height: 20rem;">
          <p class="text-2xl text-gray-600 dark:text-gray-500">

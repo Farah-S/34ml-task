@@ -13,8 +13,8 @@ class FetchCoursesMiddleware
         $courses->each(function ($course) {
             $course->lessons = $course->lessons->sortBy('order');
         });
-        
-        View::share('courses', $courses); // Share courses with all views
+
+        View::share('courses', $courses); 
 
         return $next($request);
     }

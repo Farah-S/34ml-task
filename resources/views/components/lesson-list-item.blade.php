@@ -8,7 +8,7 @@
         </div>
         <div class="min-w-0 flex-auto">
                 <p class="text-sm font-semibold leading-6 text-gray-900">{{$lesson->title}}</p>
-                <a href="{{ route('lesson', $lesson) }}" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
+                <a href="{{ route('enrolledCheck', ['lesson' => $lesson]) }}" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
         </div>
     </div>
     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
