@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home');
+// Route::view('/', 'home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
