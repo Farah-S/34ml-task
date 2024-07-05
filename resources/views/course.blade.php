@@ -9,7 +9,7 @@
             <!-- Info column on the right -->
             <div class="w-2/3">
                 <h2 class="text-xl font-bold mb-2">Title Here</h2>
-                <p class="mb-4">This is a description or any information you want to display in the column next to the image. You can add more text or other HTML elements as needed.</p>
+                <p class="mb-4">This is a description or information about the course. This is a description or information about the course. This is a description or information about the course.</p>
                 <div>
                     <x-primary-button>
                         {{ __('Enroll') }}
@@ -30,7 +30,7 @@
                         </div>
                         <div class="min-w-0 flex-auto">
                                 <p class="text-sm font-semibold leading-6 text-gray-900">Lesson Name</p>
-                                <a href="" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
+                                <a href="lesson" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
                         </div>
                     </div>
                     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
@@ -47,7 +47,7 @@
                         </div>
                         <div class="min-w-0 flex-auto">
                                 <p class="text-sm font-semibold leading-6 text-gray-900">Lesson Name</p>
-                                <a href="" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
+                                <a href="lesson" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
                         </div>
                     </div>
                     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="min-w-0 flex-auto">
                                 <p class="text-sm font-semibold leading-6 text-gray-900">Lesson Name</p>
-                                <a href="" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
+                                <a href="lesson" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
                         </div>
                     </div>
                     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
@@ -79,7 +79,7 @@
                         </div>
                         <div class="min-w-0 flex-auto">
                                 <p class="text-sm font-semibold leading-6 text-gray-900">Lesson Name</p>
-                                <a href="" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
+                                <a href="lesson" class="mt-1 truncate text-xs leading-5 blue-link">start lesson</a>
                         </div>
                     </div>
                     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
