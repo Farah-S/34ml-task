@@ -6,3 +6,16 @@
     align-content: center;
     margin: 5%;
 }
+.bg-image{
+    background-image: url("https://laravel.com/assets/img/welcome/background.svg");
+/* background-image: ; */
+}
+.navbar-bg{
+    background-color: transparent;
+    color: black;
+    font-size: 28;
+    /* border-color: black; */
+    border-bottom-width: 4px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+}
