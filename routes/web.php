@@ -3,11 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\HomeController;
 use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Middleware\FetchCoursesMiddleware;
 
-// Route::view('/', 'home');
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/', function () {
+    return view('home');
+})->middleware(FetchCoursesMiddleware::class);
 
 Route::get('/course/{course}', [CourseController::class, 'show'])->name('course');
+
+Route::post('/enroll', [UserController::class, 'enroll'])->name('course.enroll');
+
 
 // Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
