@@ -6,13 +6,14 @@ use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\LessonController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Middleware\FetchCoursesMiddleware;
 use App\Http\Middleware\IsEnrolledMiddleware;
 
 
 Route::get('/', function () {
     return view('home');
-})->middleware(FetchCoursesMiddleware::class);
+})->middleware(FetchCoursesMiddleware::class)->name('home');
 
 Route::get('/course/{course}', [CourseController::class, 'show'])->name('course');
 
@@ -36,8 +37,6 @@ Route::view('editprofile', 'editprofile')
     ->middleware(['auth'])
     ->name('editprofile');
 
-// Route::view('lesson/{lesson}', 'enrolledCheck')
-//     ->middleware(['auth'])->middleware(IsEnrolledMiddleware::class)
-//     ->name('lesson');
+Route::get('/read-notifications=', [NotificationController::class, 'markAsRead'])->name('markNotificationAsRead');
 
 require __DIR__.'/auth.php';

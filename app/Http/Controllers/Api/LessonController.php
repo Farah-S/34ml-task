@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Lesson;
 use App\Http\Controllers\Controller;
+use App\Notifications\AppNotification;
 use App\Models\Course;
+use App\Models\Achievement;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -108,20 +110,43 @@ class LessonController extends Controller
         $lessonUser->completed = true; 
         $lessonUser->save();
         
+        
+        // $completedLessonsCount = Lesson::where('user_id', $userId)
+        //     ->where('completed', true)
+        //     ->count();
+
+        $this->callAchievementApi();
+
+
         $course = DB::table('courses')
             ->select()->where('id','=',$course_id)
             ->get();
         
-
-        $lesson =    DB::table('lessons')
+        $lesson = DB::table('lessons')
                     ->where('lessons.id', '=', $lesson_id)
-                    ->select()
                     ->get();
 
         $object['course'] =$course;
         $object['lesson'] =$lesson[0];
         $serializedObject = json_encode($object);
         return redirect()->route('lesson', ['object' => $serializedObject]);
+    }
+
+
+    protected function callAchievementApi()
+    {
+        
+        $achievements= Achievement::where('title', 'LIKE', '%lesson%')->get();
+        $user=Auth::user();
+        $completedLessonsCount = $user->lessons()->where('completed', 1)->count();
+        foreach($achievements as $a){
+            if($completedLessonsCount >= $a->required_num){
+                if (!$user->achievements()->where('achievement_id', $a->id)->where('user_id',$user->id )->exists()) {
+                    $user->achievements()->attach($a->id);
+                    $user->notify(new AppNotification("New Achievement: $a->title"));
+                }
+            }
+        }
     }
 
     /**

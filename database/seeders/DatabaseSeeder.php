@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(3)->create();
-        
+        User::create(['name'=>'tester', 'email' => 'tester@example.com','email_verified_at' => now(),
+            'password' => "1234", 'remember_token' => Str::random(10)]);
         Course::factory(5)->has(Lesson::factory()->count(rand(3,10)))->create();
        
         DB::table('achievements')->insert([
