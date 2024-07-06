@@ -19,9 +19,9 @@ class AchievementController extends Controller
     {
         $user = Auth::user();
         $achievements = Achievement::all();
-        $queries = DB::getQueryLog();
+        
         $userAch=$user->achievements()->select('title')->get();
-        Log::info('Query Log', $queries);   
+         
         $names=[];
         foreach ($userAch as $a){
             $names[]=$a->title;

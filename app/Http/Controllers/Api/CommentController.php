@@ -77,13 +77,12 @@ class CommentController extends Controller
     protected function checkBadge()
     {
         $user=Auth::user();
-        $achievementCount= $user->achievements()->where('user_id',$user->id )->count();
+        $achievementCount= $user->achievements()->count();
         $badges= Badge::all();
             
         foreach($badges as $b){
-            echo $achievementCount;
             if($achievementCount >= $b->required_ach){
-                if (!$user->badges()->where('badge_id', $b->id)->where('badge_id','=', $b->id)->exists()) {
+                if (!$user->badges()->where('badge_id','=', $b->id)->exists()) {
                     $user->badges()->attach($b->id);
                     $user->notify(new AppNotification("New Badge: $b->title"));
                 }

@@ -3,64 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Badge;
 use Illuminate\Http\Request;
 
 class BadgeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function badges()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Badge $badge)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Badge $badge)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Badge $badge)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Badge $badge)
-    {
-        //
+        $user = Auth::user();
+  
+        $currentBadge=$user->badges()->latest('badge_user.created_at')->get();
+        $nextBadge=Badge::where('id', '>', $currentBadge[count($currentBadge) - 1]->id)->orderBy('id')->first();
+        $remaining=$nextBadge->required_ach - $currentBadge[count($currentBadge) - 1]->required_ach;
+        
+        return response()->json(['status' => 'success', 'current_badge' => $currentBadge[count($currentBadge) - 1]->title ,'next_badge'=>$nextBadge->title, 'remaining_to_unlock_next_badge'=>$remaining]);
+    
     }
 }

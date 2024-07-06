@@ -89,7 +89,6 @@
             <div class="h-full flex w-full justify-left items-center dark:bg-gray-800">
 
                 <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 p-4 md:p-2 xl:p-5">
-                    @foreach($profile['badges'] as $b)
                     
                     <div class="relative bg-white border rounded-md dark:bg-gray-800 dark:border-gray-700" style="width:12rem;">
                         <div class="p-2 flex justify-center">
@@ -103,13 +102,35 @@
                             <div>
                                 <a href="#">
                                     <h5 class="text-l font-semibold tracking-tight hover:text-violet-800 dark:hover:text-violet-300 text-gray-900 dark:text-white ">
-                                         {{$b->title}}
+                                         {{$profile['badges']['current_badge']}}
                                     </h5>
                                 </a>
+                               
                             </div>
                         </div>
                     </div>
-                   @endforeach
+                    
+                    <div class="relative bg-white border rounded-md dark:bg-gray-800 dark:border-gray-700" style="width:12rem;">
+                        <div class="p-2 flex justify-center">
+                    
+                                <img class="rounded-md"
+                                src="https://images.unsplash.com/photo-1600456899121-68eda5705257?q=80&w=2157&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                     loading="lazy">
+                        
+                        </div>
+                        <div class="px-4 pb-3">
+                            <div>
+                                <a href="#">
+                                    <h5 class="text-l font-semibold tracking-tight hover:text-violet-800 dark:hover:text-violet-300 text-gray-900 dark:text-white ">
+                                         {{$profile['badges']['next_badge']}}
+                                    </h5>
+                                </a>
+                                  <p class="antialiased text-gray-600 dark:text-gray-400 text-sm break-all">
+                                    {{$profile['badges']['remaining_to_unlock_next_badge']}} More Achievements Needed
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                    
                 </div>
             </div>
