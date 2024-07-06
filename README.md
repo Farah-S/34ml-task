@@ -17,3 +17,5 @@
     - email: tester@example.com
     - password: 1234
 6. explore the site
+
+Note: some button, like "start lesson" in the course details page, won't work without a condition such as being logged in or being enrolled in the course
