@@ -8,4 +8,4 @@ use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\LessonController;
 use App\Http\Controllers\Api\AchievementController;
 
-Route::get('users/{user}/achievements', [AchievementController::class, 'unlockedAchievements']);
+Route::get('users/{user}/achievements', [AchievementController::class, 'achievements']);
