@@ -25,7 +25,7 @@ Route::get('/enrolledCheck/{lesson}', [LessonController::class, 'check'])->middl
 Route::get('/lesson', [LessonController::class, 'show'])->name('lesson');
 Route::post('/lessonUpdate', [LessonController::class, 'update'])->name('lessons.update');
 
-Route::post('/enroll', [UserController::class, 'enroll'])->name('course.enroll');
+Route::post('/enroll', [UserController::class, 'enroll'])->middleware(['auth'])->name('course.enroll');
 
 Route::post('/comment', [CommentController::class, 'store'])->name('comment');
 

@@ -9,5 +9,5 @@
     - php artisan migrate (enter y if prompted)
     - php artisan db:seed
     - npm install
-    - 
+    - npm run build
     - php artisan serve
