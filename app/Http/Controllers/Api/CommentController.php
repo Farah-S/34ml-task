@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Achievement;
+use App\Notifications\AppNotification;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -50,10 +52,27 @@ class CommentController extends Controller
         // dd(DB::getQueryLog());
 
         $comment->save();
+        $this->callAchievementApi();
         $object['comments'][]=$comment;
         return back();
     }
-
+    protected function callAchievementApi()
+    {
+        $achievements= Achievement::where('title', 'LIKE', '%comment%')->get();
+        $user=Auth::user();
+        $commentsCount = $comments = DB::table('comments')
+                    ->where('comments.user_id', '=',$user->id)
+                    ->count();
+            
+        foreach($achievements as $a){
+            if($commentsCount >= $a->required_num){
+                if (!$user->achievements()->where('achievement_id', $a->id)->where('user_id',$user->id )->exists()) {
+                    $user->achievements()->attach($a->id);
+                    $user->notify(new AppNotification("New Achievement: $a->title"));
+                }
+            }
+        }
+    }
     /**
      * Display the specified resource.
      */
