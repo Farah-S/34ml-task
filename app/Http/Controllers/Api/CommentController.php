@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Achievement;
+use App\Models\Badge;
 use App\Notifications\AppNotification;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -50,11 +51,11 @@ class CommentController extends Controller
         // dd(DB::getQueryLog());
 
         $comment->save();
-        $this->callAchievementApi();
+        $this->checkAchievement();
         $object['comments'][]=$comment;
         return back();
     }
-    protected function callAchievementApi()
+    protected function checkAchievement()
     {
         $achievements= Achievement::where('title', 'LIKE', '%comment%')->get();
         $user=Auth::user();
@@ -67,6 +68,24 @@ class CommentController extends Controller
                 if (!$user->achievements()->where('achievement_id', $a->id)->where('user_id',$user->id )->exists()) {
                     $user->achievements()->attach($a->id);
                     $user->notify(new AppNotification("New Achievement: $a->title"));
+                    $this->checkBadge();
+                }
+            }
+        }
+    }
+
+    protected function checkBadge()
+    {
+        $user=Auth::user();
+        $achievementCount= $user->achievements()->where('user_id',$user->id )->count();
+        $badges= Badge::all();
+            
+        foreach($badges as $b){
+            echo $achievementCount;
+            if($achievementCount >= $b->required_ach){
+                if (!$user->badges()->where('badge_id', $b->id)->where('badge_id','=', $b->id)->exists()) {
+                    $user->badges()->attach($b->id);
+                    $user->notify(new AppNotification("New Badge: $b->title"));
                 }
             }
         }

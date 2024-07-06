@@ -111,11 +111,8 @@ class LessonController extends Controller
         $lessonUser->save();
         
         
-        // $completedLessonsCount = Lesson::where('user_id', $userId)
-        //     ->where('completed', true)
-        //     ->count();
 
-        $this->callAchievementApi();
+        $this->checkAchievement();
 
 
         $course = DB::table('courses')
@@ -133,9 +130,8 @@ class LessonController extends Controller
     }
 
 
-    protected function callAchievementApi()
+    protected function checkAchievement()
     {
-        
         $achievements= Achievement::where('title', 'LIKE', '%lesson%')->get();
         $user=Auth::user();
         $completedLessonsCount = $user->lessons()->where('completed', 1)->count();

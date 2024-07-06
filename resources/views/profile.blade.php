@@ -110,7 +110,6 @@
                         </div>
                     </div>
                    @endforeach
-                    <x-badge-card/>
                    
                 </div>
             </div>
