@@ -11,3 +11,9 @@
     - npm install
     - npm run build
     - php artisan serve
+
+4. ctrl+click on the url to open the page or paste the url in a browser
+5. login with the following credentials
+    - email: tester@example.com
+    - password: 1234
+6. explore the site
