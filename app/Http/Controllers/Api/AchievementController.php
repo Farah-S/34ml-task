@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\Log; 
 use App\Models\Achievement;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\AppNotification;
 use Illuminate\Http\Request;
 
 class AchievementController extends Controller
@@ -11,9 +15,19 @@ class AchievementController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function unlockedAchievements()
     {
-        //
+        $user = Auth::user();
+        $queries = DB::getQueryLog();
+        $userAch=$user->achievements()->select('title')->get();
+        Log::info('Query Log', $queries);   
+        $names=[];
+        foreach ($userAch as $a){
+            $names[]=$a->title;
+        }
+         $serializedObject = json_encode($names);
+        return response()->json(['status' => 'success', 'achievements' => $serializedObject]);
+    
     }
 
     /**

@@ -53,7 +53,7 @@
                             <div>
                                 <a href="#">
                                     <h5 class="text-l font-semibold tracking-tight hover:text-violet-800 dark:hover:text-violet-300 text-gray-900 dark:text-white ">
-                                         {{$a->title}}
+                                         {{$a}}
                                     </h5>
                                 </a>
                             </div>
