@@ -8,12 +8,16 @@ use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\LessonController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Middleware\FetchCoursesMiddleware;
-use App\Http\Middleware\IsEnrolledMiddleware;
+use App\Http\Middleware\FetchUserDetailsMiddleware;
 
 
 Route::get('/', function () {
     return view('home');
 })->middleware(FetchCoursesMiddleware::class)->name('home');
+
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware(['auth'])->middleware(FetchUserDetailsMiddleware::class)->name('profile');
 
 Route::get('/course/{course}', [CourseController::class, 'show'])->name('course');
 
@@ -29,9 +33,9 @@ Route::post('/comment', [CommentController::class, 'store'])->name('comment');
 //     ->middleware(['auth', 'verified'])
 //     ->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+// Route::view('profile', 'profile')
+//     ->middleware(['auth'])
+//     ->name('profile');
 
 Route::view('editprofile', 'editprofile')
     ->middleware(['auth'])

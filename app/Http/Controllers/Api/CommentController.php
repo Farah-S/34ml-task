@@ -33,8 +33,6 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-         // Update the database based on the request data
-        // $user = User::find($request->input('user_id'));
         $text = $request->input('text');
         $lesson_id = $request->input('lesson_id');
         $object = $request->input('object');
